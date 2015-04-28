@@ -16,7 +16,8 @@ ENV SSH_AUTH_SOCK /ssh-agent
 
 ####
 # Install the SSH-client + clean APT back up
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -q && \
+RUN DEBIAN_FRONTEND=noninteractive && \
+	apt-get update -q && \
 	apt-get install -yq openssh-client && \
 	apt-get autoremove --purge -yq
 	apt-get clean && \
