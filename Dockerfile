@@ -9,8 +9,8 @@
 #
 ###
 
-FROM ubuntu:14.04
-MAINTAINER Kingsquare <docker@kingsquare.nl>
+FROM jessie:latest
+MAINTAINER Artem Melnykov <artem.melnikov@ignar.name>
 
 ENV SSH_AUTH_SOCK /ssh-agent
 
