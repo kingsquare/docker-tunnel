@@ -9,8 +9,8 @@
 #
 ###
 
-FROM ubuntu:14.04
-MAINTAINER Kingsquare <docker@kingsquare.nl>
+FROM jessie:latest
+MAINTAINER Artem Melnykov <artem.melnikov@ignar.name>
 
 ENV SSH_AUTH_SOCK /ssh-agent
 
@@ -19,10 +19,10 @@ ENV SSH_AUTH_SOCK /ssh-agent
 RUN DEBIAN_FRONTEND=noninteractive && \
 	apt-get update -q && \
 	apt-get install -yq openssh-client && \
-	apt-get autoremove --purge -yq
+	apt-get autoremove --purge -yq && \
 	apt-get clean && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 VOLUME ["/ssh-agent"]
-EXPOSE 2222 
+EXPOSE 2222
 ENTRYPOINT ["/usr/bin/ssh", "-T", "-N", "-o", "StrictHostKeyChecking=false", "-o", "ServerAliveInterval=180", "-L"]
