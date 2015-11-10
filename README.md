@@ -14,7 +14,11 @@ The full syntax for starting an image from this container:
 
 * you would like to have a tunnel port 3306 on server example.com locally exposed as 3306
 	
-	docker run -d --name tunnel_mysql -v $SSH_AUTH_SOCK:/ssh-agent kingsquare/tunnel *:3306:localhost:3306 me@example.com
+	```docker run -d --name tunnel_mysql -v $SSH_AUTH_SOCK:/ssh-agent kingsquare/tunnel *:3306:localhost:3306 me@example.com```
+
+* you would like to have a tunnel port 3306 on server example.com locally exposed on the host as 3308
+	
+	```docker run -d -p 3308:3306 --name tunnel_mysql -v $SSH_AUTH_SOCK:/ssh-agent kingsquare/tunnel *:3306:localhost:3306 me@example.com```
 
 
 # Using as an Ambassador
@@ -31,4 +35,14 @@ This method allows for using this image as an ambassador to other (secure) serve
 	
 use the links in another container via exposed port 2222:
 
-	docker run --link staging-mongo:db.staging \ --link production-mongo:db.production \ my_app start
+	docker run --link staging-mongo:db.staging \ 
+	    --link production-mongo:db.production \
+	    my_app start
+
+# Changelog
+
+* 2015-11-10
+
+    Thanks to @ignar I took another look at the dockerfile and have updated it to use [AlpineLinux](http://www.alpinelinux.org/) 
+    This results in a _much_ smaller image (<8mb) and is still just as fast and functional. 
+    Thanks @ignar for bringing this container back to my attention :)

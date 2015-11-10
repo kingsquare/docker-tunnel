@@ -9,19 +9,14 @@
 #
 ###
 
-FROM ubuntu:14.04
+FROM alpine:3.2
 MAINTAINER Kingsquare <docker@kingsquare.nl>
 
 ENV SSH_AUTH_SOCK /ssh-agent
 
 ####
-# Install the SSH-client + clean APT back up
-RUN DEBIAN_FRONTEND=noninteractive && \
-	apt-get update -q && \
-	apt-get install -yq openssh-client && \
-	apt-get autoremove --purge -yq
-	apt-get clean && \
-	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
+# Install the SSH-client
+RUN apk add --update openssh-client && rm -rf /var/cache/apk/*
 
 VOLUME ["/ssh-agent"]
 EXPOSE 2222 
