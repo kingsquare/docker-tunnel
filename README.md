@@ -9,6 +9,8 @@ the image.
 The full syntax for starting an image from this container:
 
 	docker run -d --name [$your_tunnel_name] -v $SSH_AUTH_SOCK:/ssh-agent kingsquare/tunnel *:[$exposed_port]:[$destination]:[$destination_port] [$user@][$server]
+	
+**Mac support:** Please be aware that with the launch of the [Docker for Mac Beta](https://blog.docker.com/2016/03/docker-for-mac-windows-beta/) this currently doesnt work on Mac. Please see this [note](https://github.com/kingsquare/docker-tunnel/issues/2#issuecomment-220782052)
 
 # Examples
 
