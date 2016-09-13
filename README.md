@@ -43,6 +43,20 @@ use the links in another container via exposed port 2222:
 
 # Changelog
 
+* 2016-09-13
+
+    Thanks to @phlegx we now have a seperate tag for reversed tunnels (remote -> local)
+    This adds the following tags to this repo:
+    - `kingsquare/tunnel:latest` (the `-L` option)
+    - `kingsquare/tunnel:forward`
+    - `kingsquare/tunnel:l`
+    
+    and the reverse option: (the `-R` option)
+    - `kingsquare/tunnel:reverse`
+    - `kingsquare/tunnel:r`
+    
+    Thanks @ignar for bringing this container back to my attention :)
+
 * 2015-11-10
 
     Thanks to @ignar I took another look at the dockerfile and have updated it to use [AlpineLinux](http://www.alpinelinux.org/) 
