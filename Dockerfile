@@ -20,4 +20,6 @@ ENV SSH_AUTH_SOCK /ssh-agent
 RUN apk add --update autossh && rm -rf /var/cache/apk/*
 
 VOLUME ["/ssh-agent"]
+# for ambassador mode
+EXPOSE 2222
 ENTRYPOINT ["/usr/bin/autossh", "-M", "0", "-T", "-N", "-oStrictHostKeyChecking=no", "-L"]
