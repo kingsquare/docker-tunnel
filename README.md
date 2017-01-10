@@ -49,6 +49,9 @@ use the links in another container via exposed port 2222:
    - Modified image to use the `alpine:latest`
    - Use `autossh` instead of simple `ssh` for extra stability of the tunnel
    - Provided sample `Makefile` to automate the build process
+
+	```SSH_CMD="*:6379:localhost:6379 martin@172.17.0.1" make build-container```
+
    - As original, the assumption is, that local `ssh-agent` holds the
      required identity files.  Better solution probably would be to
      generate new ssh key (`ssh-keygen`) and use the ssh `-i` option to
