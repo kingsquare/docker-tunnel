@@ -9,9 +9,8 @@
 #
 ###
 
-FROM alpine:latest
+FROM alpine:3.5
 MAINTAINER Kingsquare <docker@kingsquare.nl>
-MAINTAINER bubak4 <mar@centrum.cz>
 
 ENV SSH_AUTH_SOCK /ssh-agent
 
@@ -22,4 +21,6 @@ RUN apk add --update autossh && rm -rf /var/cache/apk/*
 VOLUME ["/ssh-agent"]
 # for ambassador mode
 EXPOSE 2222
-ENTRYPOINT ["/usr/bin/autossh", "-M", "0", "-T", "-N", "-oStrictHostKeyChecking=no", "-L"]
+
+
+ENTRYPOINT ["/usr/bin/autossh", "-M", "0", "-T", "-N", "-oStrictHostKeyChecking=no", "-oServerAliveInterval=180", "-oUserKnownHostsFile=/dev/null", "-L"]

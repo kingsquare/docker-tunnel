@@ -44,18 +44,19 @@ use the links in another container via exposed port 2222:
 
 # Changelog
 
-* 2017-01-10
+* 2017-01-27
 
-   - Modified image to use the `alpine:latest`
+   - Update image to use the `alpine:3.5`
    - Use `autossh` instead of simple `ssh` for extra stability of the tunnel
-   - Provided sample `Makefile` to automate the build process
+   - Provided sample `Makefile` to automate the build process -- on
+     unix-like systems you can use make command to build docker image and
+     container.
 
 	```SSH_CMD="*:6379:localhost:6379 martin@172.17.0.1" make build-container```
 
-   - As original, the assumption is, that local `ssh-agent` holds the
-     required identity files.  Better solution probably would be to
-     generate new ssh key (`ssh-keygen`) and use the ssh `-i` option to
-     provide the identity directly
+   - The assumption is, that local `ssh-agent` holds the required identity
+     files.  Another solution may be to generate new ssh key (`ssh-keygen`)
+     and use the ssh `-i` option to provide the identity directly.
 
 * 2016-09-13
 
