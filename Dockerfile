@@ -9,7 +9,7 @@
 #
 ###
 
-FROM alpine:3.5
+FROM alpine:3.7
 MAINTAINER Kingsquare <docker@kingsquare.nl>
 
 ENV SSH_AUTH_SOCK /ssh-agent
